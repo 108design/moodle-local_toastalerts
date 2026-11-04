@@ -4,8 +4,10 @@
 
 # Toast Alerts
 
-`local_toastalerts` applies one semantic presentation policy to Moodle's global notifications and Core toasts.
-It does not reposition ordinary `.alert` components rendered deliberately inside page content.
+Toast Alerts unifies the different notification styles used by older Moodle versions and plugins,
+using Moodle 5.3 as its visual reference. It gives global notifications and Core toasts consistent
+placement, timing and dismiss controls across Moodle 4.5 to 5.3. Deliberate inline alerts in page
+content remain in place unless their producer explicitly opts in.
 
 ## Installation and settings
 
@@ -57,8 +59,10 @@ The generic `add(message, options)` export accepts `type` (`success`, `info`, `w
 
 ## Compatibility
 
-The compatibility floor is Moodle 4.5 (`2024100700`). Managed alerts do not call Bootstrap's Alert API. Native Core
-toasts continue to use Moodle's own `core/toast` implementation, avoiding direct coupling to a Bootstrap version.
+Toast Alerts is compatible with Moodle 4.5, 5.0, 5.1, 5.2 and 5.3. Moodle 5.3 is the reference
+for its notification presentation on older versions. Managed alerts do not call Bootstrap's Alert API.
+Native Core toasts continue to use Moodle's own `core/toast` implementation, avoiding direct coupling
+to a Bootstrap version.
 
 ## Screenshots
 
