@@ -1,4 +1,8 @@
-# Toast alerts
+<p align="center">
+  <img src="docs/branding/logo.svg" alt="Toast Alerts" width="125">
+</p>
+
+# Toast Alerts
 
 `local_toastalerts` applies one semantic presentation policy to Moodle's global notifications and Core toasts.
 It does not reposition ordinary `.alert` components rendered deliberately inside page content.
@@ -35,7 +39,7 @@ severity, lane and transient duration. The actual element is moved, so existing 
 
 ## JavaScript API
 
-Suite plugins can import `local_toastalerts/manager` and describe the notification's meaning instead of selecting a
+Plugins can import `local_toastalerts/manager` and describe the notification's meaning instead of selecting a
 Moodle output channel:
 
 ```javascript
@@ -55,6 +59,18 @@ The generic `add(message, options)` export accepts `type` (`success`, `info`, `w
 
 The compatibility floor is Moodle 4.5 (`2024100700`). Managed alerts do not call Bootstrap's Alert API. Native Core
 toasts continue to use Moodle's own `core/toast` implementation, avoiding direct coupling to a Bootstrap version.
+
+## Screenshots
+
+![Success and persistent information notifications](docs/screenshots/toast-alerts-notifications.jpg)
+
+![Notification duration and preview controls](docs/screenshots/toast-alerts-settings.jpg)
+
+## Support
+
+Report reproducible problems in the [issue tracker](https://github.com/108design/moodle-local_toastalerts-marketplace/issues).
+Include your Moodle and PHP versions, the active theme, and the steps needed to reproduce the problem.
+Remove personal data and sign-in links from reports.
 
 ## License
 

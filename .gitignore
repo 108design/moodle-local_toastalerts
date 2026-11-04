@@ -1,0 +1,13 @@
+PROJECT_*.md
+AGENTS.md
+CLAUDE.md
+HANDOVER*.md
+.agents/
+.codex/
+.env
+.env.*
+*.zip
+vendor/
+node_modules/
+.phpunit.cache/
+.phpunit.result.cache

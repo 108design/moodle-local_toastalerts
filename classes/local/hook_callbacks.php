@@ -20,7 +20,7 @@ use core\hook\output\before_http_headers;
  */
 final class hook_callbacks {
     /** Current plugin version, used to invalidate the explicitly linked static stylesheet. */
-    private const PLUGIN_VERSION = 2026010100;
+    private const PLUGIN_VERSION = 2026110400;
 
     /** Minimum supported success timeout in milliseconds. */
     private const MIN_SUCCESS_TIMEOUT = 2000;
