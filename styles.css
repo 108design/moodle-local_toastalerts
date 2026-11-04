@@ -1,0 +1,249 @@
+/* Global notifications use semantic lanes: transient centre and persistent/error right. */
+body.local-toastalerts-enabled > .local-toastalerts-transient-region,
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region {
+    --local-toastalerts-top: var(--navbar-height, 60px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin: 0;
+    max-height: calc(100dvh - var(--local-toastalerts-top) - 2rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0;
+    pointer-events: none;
+    position: fixed;
+    scrollbar-width: none;
+    top: calc(var(--local-toastalerts-top) + 1rem);
+    z-index: 1051;
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region {
+    bottom: auto;
+    left: 50%;
+    max-width: calc(100vw - 2rem);
+    right: auto;
+    transform: translateX(-50%);
+    width: 380px;
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region {
+    --local-toastalerts-right: 16px;
+    left: auto;
+    max-width: calc(100vw - var(--local-toastalerts-right) - 1rem);
+    right: var(--local-toastalerts-right);
+    width: 380px;
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region::-webkit-scrollbar,
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region::-webkit-scrollbar {
+    display: none;
+    height: 0;
+    width: 0;
+}
+
+/* The lane owns the navigation offset and gap, so Core's first-toast margin is no longer needed. */
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > :first-child {
+    margin-top: 0;
+}
+
+/* Scrolling lanes clip outer shadows into rectangular corner artefacts. Keep floating surfaces shadow-free. */
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast,
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .local-toastalerts-toast,
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region > .local-toastalerts-toast {
+    box-shadow: none;
+    flex: 0 0 auto;
+    margin: 0;
+    max-width: 100%;
+    pointer-events: auto;
+    width: 100%;
+}
+
+/* Retain the rendered theme colour, but composite it over white so page content never shows through. */
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast.local-toastalerts-core-toast,
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .alert.local-toastalerts-toast,
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region > .alert.local-toastalerts-toast {
+    background-color: #fff !important;
+    background-image: linear-gradient(
+        var(--local-toastalerts-site-background, transparent),
+        var(--local-toastalerts-site-background, transparent)
+    ) !important;
+}
+
+body.local-toastalerts-enabled .alert.local-toastalerts-managed {
+    align-items: flex-start;
+    display: flex;
+    gap: .5rem;
+}
+
+/* Explicitly adopted notices leave any source-specific fixed positioning behind. */
+body.local-toastalerts-enabled .local-toastalerts-adopt.local-toastalerts-managed {
+    bottom: auto;
+    left: auto;
+    margin: 0;
+    max-width: 100%;
+    position: static;
+    right: auto;
+    top: auto;
+    width: 100%;
+    z-index: auto;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-message {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-message > :last-child,
+body.local-toastalerts-enabled .local-toastalerts-converted-title:last-child {
+    margin-bottom: 0;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-converted-title {
+    display: block;
+    margin-bottom: .25rem;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-icon {
+    flex: 0 0 auto;
+    line-height: inherit;
+    margin: .125rem 0 0;
+    width: 1.25em;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-toast {
+    opacity: 0;
+    transform: translate3d(0, -.5rem, 0);
+    transition: opacity 180ms ease, transform 180ms ease;
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region .local-toastalerts-toast {
+    transform: translate3d(1rem, 0, 0);
+}
+
+body.local-toastalerts-enabled .local-toastalerts-toast.local-toastalerts-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+body.local-toastalerts-enabled .local-toastalerts-toast.local-toastalerts-hiding,
+body.local-toastalerts-enabled #user-notifications .local-toastalerts-inline-error.local-toastalerts-hiding {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-toast.local-toastalerts-hiding {
+    transform: translate3d(0, -.5rem, 0);
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-persistent-region
+.local-toastalerts-toast.local-toastalerts-hiding {
+    transform: translate3d(1rem, 0, 0);
+}
+
+body.local-toastalerts-enabled #user-notifications .local-toastalerts-inline-error {
+    transition: opacity 180ms ease;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-toast .btn-close,
+body.local-toastalerts-enabled .local-toastalerts-toast [data-local-toastalerts-dismiss],
+body.local-toastalerts-enabled #user-notifications .local-toastalerts-inline-error .btn-close {
+    cursor: pointer;
+}
+
+body.local-toastalerts-enabled .local-toastalerts-generated-close {
+    background: transparent;
+    flex: 0 0 auto;
+    font-size: 1.5rem;
+    height: 1em;
+    line-height: 1;
+    position: static;
+    text-indent: 0;
+    width: 1em;
+}
+
+/* Retain Core's familiar severity symbols even when a theme weakens its toast rules. */
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast .toast-body::before {
+    flex: 0 0 auto;
+    font: var(--fa-font-solid);
+    margin: 2px 5px 0 0;
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast-success .toast-body::before {
+    content: "\f058";
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast-info .toast-body::before {
+    content: "\f05a";
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast-warning .toast-body::before {
+    content: "\f06a";
+}
+
+body.local-toastalerts-enabled > .local-toastalerts-transient-region > .toast-danger .toast-body::before {
+    content: "\f057";
+}
+
+@media (max-width: 575.98px) {
+    body.local-toastalerts-enabled > .local-toastalerts-transient-region,
+    body.local-toastalerts-enabled > .local-toastalerts-persistent-region {
+        left: 1rem;
+        max-width: none;
+        right: 1rem;
+        transform: none;
+        width: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body.local-toastalerts-enabled .local-toastalerts-toast,
+    body.local-toastalerts-enabled #user-notifications .local-toastalerts-inline-error {
+        transform: none;
+        transition: none;
+    }
+}
+
+@media print {
+    body.local-toastalerts-enabled > .local-toastalerts-transient-region,
+    body.local-toastalerts-enabled > .local-toastalerts-persistent-region {
+        display: none;
+    }
+}
+
+/* Compact cell-bordered licence tables use the suite-wide natural-width presentation. */
+body[id^="page-local-toastalerts-"] table.generaltable.local-toastalerts-compact-table > :not(caption) > * > *,
+body[id^="page-admin-local-toastalerts-"] table.generaltable.local-toastalerts-compact-table > :not(caption) > * > * {
+    border-width: 1px;
+}
+
+body[id^="page-local-toastalerts-"] table.generaltable.local-toastalerts-compact-table > thead > tr > th,
+body[id^="page-admin-local-toastalerts-"] table.generaltable.local-toastalerts-compact-table > thead > tr > th {
+    background-color: var(--local-108design-surface-muted, #e9ecef);
+}
+
+.local-toastalerts-compact-action-table > thead > tr > th:last-child,
+.local-toastalerts-compact-action-table > tbody > tr > td:last-child {
+    text-align: center !important; /* stylelint-disable-line declaration-no-important */
+}
+
+.local-toastalerts-license-table-wrap {
+    margin-top: 1.5rem;
+}
+
+.local-toastalerts-license-table {
+    margin-bottom: 0;
+}
+
+.local-toastalerts-license-action {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 2rem;
+    min-width: 2rem;
+}
+
+.local-toastalerts-license-action .icon {
+    margin: 0;
+}
