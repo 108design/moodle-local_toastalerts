@@ -32,7 +32,8 @@ final class admin_help {
         $PAGE->requires->css(new \moodle_url('/local/toastalerts/styles/admin_help.css', [
             'rev' => get_config('local_toastalerts', 'version'),
         ]));
-        $module = (int)$CFG->version < 2025041400 ? 'admin_help_legacy' : 'admin_help';
+        $module = (int)$CFG->version < 2025041400 ? 'admin_help_legacy'
+            : ((int)$CFG->version >= 2026100500 ? 'admin_help_53' : 'admin_help');
         $PAGE->requires->js_call_amd('local_toastalerts/admin_help_form', 'init');
         $PAGE->requires->js_call_amd('local_toastalerts/' . $module, 'init', [[
             'topic' => optional_param('toastalertshelp', '', PARAM_ALPHA),
