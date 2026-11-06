@@ -1,5 +1,10 @@
 <?php
 /**
+ * This file is part of a 108design source-available software product.
+ *
+ * Use and modification are permitted only under the Software License included
+ * with this distribution. See LICENSE.md for the full terms.
+ *
  * File documentation for lang/de/local_toastalerts.php.
  *
  * @package   local_toastalerts
