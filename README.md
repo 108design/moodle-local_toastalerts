@@ -72,7 +72,7 @@ to a Bootstrap version.
 
 ## Support
 
-Report reproducible problems in the [issue tracker](https://github.com/108design/moodle-local_toastalerts/issues).
+Report reproducible problems in the [issue tracker](https://github.com/108design/moodle-local_toastalerts-marketplace/issues).
 Include your Moodle and PHP versions, the active theme, and the steps needed to reproduce the problem.
 Remove personal data and sign-in links from reports.
 
