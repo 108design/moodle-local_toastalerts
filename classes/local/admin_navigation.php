@@ -1,4 +1,5 @@
 <?php
+// This file is part of Moodle - https://moodle.org/
 /**
  * File documentation for classes/local/admin_navigation.php.
  *
