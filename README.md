@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/branding/logo.svg" alt="Toast Alerts" width="125">
+  <img src="https://raw.githubusercontent.com/108design/moodle-local_toastalerts/main/docs/branding/logo.svg" alt="Toast Alerts" width="125">
 </p>
 
 # Toast Alerts
@@ -66,9 +66,9 @@ to a Bootstrap version.
 
 ## Screenshots
 
-![Success and persistent information notifications](docs/screenshots/toast-alerts-notifications.jpg)
+![Success and persistent information notifications](https://raw.githubusercontent.com/108design/moodle-local_toastalerts/main/docs/screenshots/toast-alerts-notifications.jpg)
 
-![Notification duration and preview controls](docs/screenshots/toast-alerts-settings.jpg)
+![Notification duration and preview controls](https://raw.githubusercontent.com/108design/moodle-local_toastalerts/main/docs/screenshots/toast-alerts-settings.jpg)
 
 ## Support
 

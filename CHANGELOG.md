@@ -1,3 +1,7 @@
+## 1.1.2 — 20 November 2026
+
+Correct repository and documentation image links in the installation package.
+
 # Changelog
 
 ## 1.0.0 — 4 November 2026
